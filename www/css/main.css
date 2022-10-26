@@ -1,0 +1,14 @@
+/* common stylesheet */
+body {
+	display: grid;
+	min-height: 95vh;
+	grid-template-rows: 1fr auto;
+}
+
+footer {
+	background-color: lavender;
+}
+
+#update_date {
+	font-size: small;
+}

@@ -1,0 +1,23 @@
+/* stylesheet for hardware pages */
+#hardware_info th {
+	background-color: lightsteelblue;
+	padding: 0 10px;
+}
+
+#hardware_info td {
+	background-color: whitesmoke;
+	padding: 0 10px;
+}
+
+.code {
+	font-family: monospace;
+	white-space: pre-line;
+	background-color: darkslategrey;
+	color: white;
+	width: 60%;
+	display: block;
+}
+
+ol>li {
+	margin: 20px;
+}
