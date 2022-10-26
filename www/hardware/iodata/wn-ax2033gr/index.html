@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+	<meta charset="utf-8">
+	<title>I-O DATA WN-AX2033GR</title>
+</head>
+
+<body>
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/hardware.css">
+
+	<main>
+		<h1>I-O DATA WN-AX2033GR</h1>
+		<p id="update_date">更新日: 2022/10/26</p>
+
+		<section>
+			<h2>ハードウェアの情報</h2>
+
+			<table id="hardware_info">
+				<caption>各種デバイスの一覧</caption>
+				<tbody>
+					<tr>
+						<th scope="row">SoC</th><td>Mediatek MT7621</td>
+					</tr>
+					<tr>
+						<th scope="row">RAM</th><td>DDR3 128MiB</td>
+					</tr>
+					<tr>
+						<th scope="row">ストレージ</th><td>Spansion S34ML01G200TF100</td>
+					</tr>
+					<tr>
+						<th scope="row">Wi-Fi</th><td>Mediatek MT7615</td>
+					</tr>
+					<tr>
+						<th scope="row">Wi-Fi</th><td>Mediatek MT7603E</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h2>OpenWrtのサポート状況</h2>
+
+			<p>サポートされています。<a href="https://git.openwrt.org/e66becb49079">(commit)</a></p>
+		</section>
+
+		<section>
+			<h2>その他の情報</h2>
+
+			<h3>デバッグ機能を使用する</h3>
+
+			<p>このデバイスは起動時にZ-LOADERと呼ばれるプロプライエタリなプログラムを実行します。Z-LOADERにはMACアドレスの変更といった設定変更の他に、TFTPサーバーからOSのイメージを取得してNANDフラッシュメモリに書き込むといった機能があります。debugflagというフラグの値を1に設定することで、シリアルコンソールからZ-LOADERの操作を行うことが可能になり、仮に破損したOSイメージを書き込んだとしても比較的容易に復旧できます。（debugflagが0の場合、フラッシュメモリを物理的に取り外して修復する必要があります）</p>
+
+			<p>debugflagの値を変更する方法はいくつかあり、OpenWrtのfactoryイメージではフラッシュメモリを直接書き換えています。他の方法としては、stock firmwareに含まれている"sys"コマンドを使用するものがあります。stock firmwareのrootアカウントにはパスワードが設定されている上に、debugflagの値を格納しているFactory領域への書き込みをmtd_locked.koが制限しているため、これを回避する必要があります。</p>
+
+			<h3>debugflagをsysコマンドで制御する</h3>
+
+			<p>必要な物</p>
+
+			<ul>
+				<li>USB-シリアル変換アダプタ</li>
+				<li>RLogin（キー操作の記録機能を使用します）</li>
+				<li>反射神経</li>
+			</ul>
+
+			<ol>
+				<li>RLoginの「キー操作の記録」機能を使用して、以下の操作を記録します。[Enter]はEnterキーの押し下げです。
+					<div class="code">
+						[Enter]
+						root
+						[Enter]
+						[Enter]
+						rm /etc/init.d/mstc_mtd_locked
+						[Enter]
+					</div>
+				</li>
+
+				<li>RLoginでWN-AX2033GRのシリアルコンソールに接続して、WN-AX2033GRを起動します。
+					<div class="code">
+						procd: - init -
+						Please press Enter to activate this console.
+					</div>
+					と表示されたらEnterキーを押してください。
+					<div class="code">MT7621 login:</div>
+					と表示されるのでログインするまでRLoginの「キー操作の再現」ボタンを連打してください。
+				</li>
+
+				<li>
+					<div class="code">sys debugflag 1</div>でdebugflagを有効化できます。
+				</li>
+			</ol>
+		</section>
+	</main>
+
+	<footer>
+		<a href="/about">このWebサイトについて</a>
+	</footer>
+</body>
+</html>
