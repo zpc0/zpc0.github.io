@@ -21,3 +21,7 @@ footer {
 	width: 60%;
 	display: block;
 }
+
+ol>li {
+	margin: 20px;
+}
