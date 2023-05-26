@@ -12,3 +12,12 @@ footer {
 #update_date {
 	font-size: small;
 }
+
+.code {
+	font-family: monospace;
+	white-space: pre-line;
+	background-color: darkslategrey;
+	color: white;
+	width: 60%;
+	display: block;
+}

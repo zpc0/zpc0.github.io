@@ -9,15 +9,6 @@
 	padding: 0 10px;
 }
 
-.code {
-	font-family: monospace;
-	white-space: pre-line;
-	background-color: darkslategrey;
-	color: white;
-	width: 60%;
-	display: block;
-}
-
 ol>li {
 	margin: 20px;
 }
