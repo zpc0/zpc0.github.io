@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+	<meta charset="utf-8">
+	<title>バージョン番号のないdisposable templateを作成する</title>
+</head>
+
+<body>
+	<link rel="stylesheet" href="/css/main.css">
+
+	<main>
+		<h1>バージョン番号のないdisposable templateを作成する</h1>
+		<p id="update_date">更新日: 2023/05/26</p>
+
+		<section>
+			<p>このメモはQubes OS R4.1を対象としています。他のバージョンでは動作しない可能性があります。</p>
+			<p>Qubes OS R4.1まで、標準で作成されるdisposable templateは"fedora-37-dvm"のように、その名前にディストリビューションのバージョン番号が含まれています。しかしQubes OS R4.2では標準のdisposable templateの名前から<a href="https://github.com/QubesOS/qubes-issues/issues/8071">バージョン番号を削除することが提案されています</a>。私の知る限り、disposable templateにバージョン番号が含まれていても特にメリットはないので、R4.2の変更を先取りして新しくdisposable templateを作成し、それを使用するように設定してみましょう。</p>
+		</section>
+
+		<h2>具体的な手順</h2>
+		<section>
+			<p>ここではシステムにインストールされているFedora templateがバージョン37であると仮定して進めていきます。バージョン番号は適宜読み替えてください。</p>
+
+			<ol>
+				<li>
+					<div class="code">qvm-create -l red -t fedora-37 fedora-dvm
+						qvm-prefs fedora-dvm template_for_dispvms True
+						qvm-features fedora-dvm appmenus-dispvm 1</div>
+					この3行のコマンドで新しくdisposable templateを作成します。今回は名前を"fedora-dvm"としました。1行目で新しくqubeを作成し、2行目でそれをdisposable templateとして利用できるように設定します。3行目ではアプリメニューで作成した"fedora-dvm"がdisposableとして扱われるように設定しています。
+				</li>
+
+				<li>
+					<div class="code">qubes-prefs default-dispvm fedora-dvm</div>
+					Qubes OSシステムの標準disposableを新しく作成した"fedora-dvm"に設定します。
+				</li>
+
+				<li>
+					<div class="code">qvm-shutdown --wait --all</div>
+					全てのqubeをシャットダウンします。これをしないと次のステップが実行できません。USB接続のマウスやキーボードは使用できなくなる可能性があるので注意してください。
+				</li>
+
+				<li>
+					<div class="code">qvm-prefs sys-usb template fedora-dvm
+						qvm-prefs sys-net template fedora-dvm
+						qvm-prefs sys-firewall template fedora-dvm</div>
+					sys-usbやsys-net、sys-firewallがdisposableとなっている場合はこのコマンドで"fedora-dvm"を使用するように設定します。このコマンドは各qubeが停止しているときのみ実行できます。
+				</li>
+
+				<li>fedora-37-dvmを使用しているところ（あれば）の設定を変更する。</li>
+
+				<li>
+					<div class="code">qvm-remove fedora-37-dvm</div>
+					不要になったfedora-37-dvmを削除します。このコマンドが失敗する場合はシステムのどこかでfedora-37-dvmを使用する設定が残っているということなので、それを修正してください。
+				</li>
+			</ol>
+		</section>
+	</main>
+
+	<footer>
+		<a href="/about">このWebサイトについて</a>
+	</footer>
+</body>
+</html>
