@@ -10,7 +10,7 @@
 
 	<main>
 		<h1>Qubes OS: バージョン番号のないdisposable templateを作成する</h1>
-		<p id="update_date">更新日: 2023/05/27</p>
+		<p id="update_date">更新日: 2023/07/18</p>
 
 		<section>
 			<p>このメモはQubes OS R4.1を対象としています。他のバージョンでは動作しない可能性があります。</p>
@@ -23,15 +23,15 @@
 
 			<ol>
 				<li>
-					<div class="code">qvm-create -l red -t fedora-37 fedora-dvm
-						qvm-prefs fedora-dvm template_for_dispvms True
-						qvm-features fedora-dvm appmenus-dispvm 1</div>
-					この3行のコマンドで新しくdisposable templateを作成します。今回は名前を"fedora-dvm"としました。1行目で新しくqubeを作成し、2行目でそれをdisposable templateとして利用できるように設定します。3行目ではアプリメニューで作成した"fedora-dvm"がdisposableとして扱われるように設定しています。
+					<div class="code">qvm-create -l red -t fedora-37 default-dvm
+						qvm-prefs default-dvm template_for_dispvms True
+						qvm-features default-dvm appmenus-dispvm 1</div>
+					この3行のコマンドで新しくdisposable templateを作成します。今回は名前を"default-dvm"としました。1行目で新しくqubeを作成し、2行目でそれをdisposable templateとして利用できるように設定します。3行目ではアプリメニューで作成した"default-dvm"がdisposableとして扱われるように設定しています。
 				</li>
 
 				<li>
-					<div class="code">qubes-prefs default-dispvm fedora-dvm</div>
-					Qubes OSシステムの標準disposableを新しく作成した"fedora-dvm"に設定します。
+					<div class="code">qubes-prefs default-dispvm default-dvm</div>
+					Qubes OSシステムの標準disposableを新しく作成した"default-dvm"に設定します。
 				</li>
 
 				<li>
@@ -40,13 +40,13 @@
 				</li>
 
 				<li>
-					<div class="code">qvm-prefs sys-usb template fedora-dvm
-						qvm-prefs sys-net template fedora-dvm
-						qvm-prefs sys-firewall template fedora-dvm</div>
-					sys-usbやsys-net、sys-firewallがdisposableとなっている場合はこのコマンドで"fedora-dvm"を使用するように設定します。このコマンドは各qubeが停止しているときのみ実行できます。
+					<div class="code">qvm-prefs sys-usb template default-dvm
+						qvm-prefs sys-net template default-dvm
+						qvm-prefs sys-firewall template default-dvm</div>
+					sys-usbやsys-net、sys-firewallがdisposableとなっている場合はこのコマンドで"default-dvm"を使用するように設定します。このコマンドは各qubeが停止しているときのみ実行できます。
 				</li>
 
-				<li>fedora-37-dvmを使用しているところ（あれば）の設定を新しく作成したfedora-dvmを使用するように変更する。</li>
+				<li>fedora-37-dvmを使用しているところ（あれば）の設定を新しく作成したdefault-dvmを使用するように変更する。</li>
 
 				<li>
 					<div class="code">qvm-remove fedora-37-dvm</div>
