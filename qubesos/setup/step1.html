@@ -10,10 +10,10 @@
 
 	<main>
 		<h1>Qubes OS 非公式セットアップガイド Step1: インストール</h1>
-		<p id="update_date">更新日: 2023/07/19</p>
+		<p id="update_date">更新日: 2023/07/21</p>
 
 		<section>
-			<p>さて、Step0でインストールメディアの作成までできたことと思います。Step1では実際にコンピューターにQubes OSをインストールしていきます。ISOファイルの検証はしましたよね？やってない場合はStep0をもう一度やり直してください。</p>
+			<p>さて、<a href="/qubesos/setup/step0.html">Step0</a>でインストールメディアの作成までできたことと思います。Step1では実際にコンピューターにQubes OSをインストールしていきます。ISOファイルの検証はサボらずにしましたよね？やっていない場合はStep0をもう一度やり直してください。</p>
 			<p>このガイドではLenovo ThinkPad X270にQubes OSをインストールしていきます。</p>
 		</section>
 
@@ -54,6 +54,24 @@
 			<img src="/qubesos/setup/img/final.jpg">
 			<p>中央のQubes OSというところをクリックしてください。次のような画面になるはずです。</p>
 			<img src="/qubesos/setup/img/final2.jpg">
+			<p>何だか難しそうな設定画面が登場しました。ここでは推奨する設定も含め簡単に解説します。</p>
+			<ul>
+				<li><b>Installation:</b>: どのディストリビューションをインストールするか設定します。Qubes OSの標準ディストリビューションはFedoraなので、Fedoraはチェックすることを推奨します。Debianはお好みで、WhonixはTorを使う場合はオンにしましょう。DebianやWhonixはあとからインストールすることもできます。</li>
+				<li><b>Default:</b>: システムの標準ディストリビューションを設定します。トラブルを減らすためにもQubes標準のFedoraを設定することを推奨します。</li>
+				<li><b>Create default system qubes (sys-net, sys-firewall, default DispVM)</b>: ネットワーク接続の機能に必要なqubeなど、必須といえるqubeを作成します。特別な理由がない限りオンにしてください。</li>
+				<li><b>Make sys-firewall and sys-usb disposable</b>: ファイアウォールとUSBを扱うqubeが再起動毎にリセットされるようにします。リセットする方が高セキュリティです。通常の使用ではリセットにデメリットはないのでオンにすることを推奨します。</li>
+				<li><b>Make sys-net disposable</b>: ネットワークを扱うqubeが再起動毎にリセットされるようにします。一つ上の設定（sys-fireallとsys-usb）と違って、状況によってはオフの方がいい場合があります。それはWi-Fi経由でインターネットに接続する場合です。この設定をオンにすると、再起動毎にWi-Fiのパスワードを入れる必要が発生します。なので、普段有線でネット接続する場合はオンに、普段無線でネット接続する場合はオフにすることを推奨します。オンの方が高セキュリティです。</li>
+				<li><b>Create default application qubes</b>: プリセットとして用意されたqubeを展開するか選べます。インストール後にすぐ使い始めたい場合はオンにするとよいでしょう。これはセキュリティとは特に関係ありません。</li>
+				<li><b>Use a qube to hold all USB controllers</b>: USBをセキュアに扱う専用のqube（USB qube）を作成するか選べます。これをオンにするとUSB関連のセキュリティが大幅に向上するのでオンがお勧めなのですが、この機能を使用できない状況も存在するので注意が必要です。あなたのコンピューターがデスクトップ機で、キーボードがUSB接続の場合にはこれをオンにできない可能性があります。詳しくはフォーラム等で質問してください。<a href="https://www.qubes-os.org/doc/usb-qubes/">公式の文書</a>も確認してください。それ以外の場合はオンが推奨されます。</li>
+				<li><b>Use sys-net qube for both networking and USB devices</b>: これをオンにするとsys-netというネットワーク用のqubeがUSBの処理も担うようになります。この設定はUSB-イーサネットアダプタやUSB-Wi-Fi子機などを使用するユーザーのためのものです。インターネット接続にそれらの機器が必要な場合はオンに、それ以外の場合にはオフにしてください。オフにすると多少セキュリティが向上します。</li>
+				<li><b>Automatically accept USB mice</b>: USB qubeを設定したシステムで、USB接続のマウスを使用すると通常は接続する毎に確認が求められるのですが、これをオンにするとその確認をスキップできるようになります。ただし、BadUSB攻撃によってシステムを勝手に操作させられる可能性が多少出てきますので、オンにする場合は個人の判断で行ってください。USB接続のマウスを使用していない（ラップトップのタッチパッドを使用する等）場合はオフのままにしてください。</li>
+				<li><b>Automatically accept USB keyboard</b>: 上記のUSBキーボード版です。一つ違うのが、こちらはBadUSBを食らった際のリスクがかなり高くなるという点です。ラップトップのキーボード等を使う場合は必ずオフに、そうでない場合も多少面倒でもオフにすることを推奨します。</li>
+				<li><b>Create Whonix Gateway and Workstation qubes</b>: Whonixが使用するqubeを作成します。WhonixやTorを使いたい場合はオンに、そうでない場合はオフにしましょう。</li>
+				<li><b>Enable system and template updates over the Tor anonymity network using Whonix</b>: システムやディストリビューションの更新のダウンロードをTor経由で行うか選択できます。Torを使わないといけないような監視下のネットワークにある人はオンにしたほうがよいかも知れませんが、これをオンにすると更新に時間がかかるようになるのでデメリットもあります。日本に住んでいる一般の方はオフでよいと思います。</li>
+				<li><b>Do not configure anything</b>: 何も設定しないという上級者向けの設定です。オンにしないでください。</li>
+			</ul>
+			<p>設定が終わったら左上から設定を完了しましょう。第二段階のインストール作業が始まります。これにはしばらくかかります。作業が完了するとログイン画面が表示されます。パスワードを入力してログインしてください。これでインストールは完了です。お疲れさまでした。</p>
+			<p>作業を終える前に必ず<a href="/qubesos/setup/step2.html">Step2</a>を実行してください。セキュリティを維持するには継続的なシステムのメンテナンスが重要です。</p>
 		</section>
 	</main>
 
