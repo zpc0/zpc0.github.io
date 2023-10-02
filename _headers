@@ -1,0 +1,8 @@
+/*
+  Content-Security-Policy: default-src 'none'; img-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; require-trusted-types-for 'script';  trusted-types 'none';
+  Cross-Origin-Embedder-Policy: require-corp
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+  Permissions-Policy: autoplay=(), camera=(), display-capture=(), fullscreen=(), gamepad=(), geolocation=(), microphone=(), speaker-selection=(), web-share=()
+  Referrer-Policy: no-referrer
+  X-Frame-Options: DENY
