@@ -1,4 +1,0 @@
-# Don't Gyotaku, please archive.
-User-agent: Megalodon
-Disallow: /
-
