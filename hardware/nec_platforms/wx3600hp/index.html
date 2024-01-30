@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+	<meta charset="utf-8">
+	<title>NEC Platforms Aterm WX3600HP</title>
+</head>
+
+<body>
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/hardware.css">
+
+	<main>
+		<h1>Title</h1>
+		<p id="update_date">更新日: 2024/01/30</p>
+
+		<section>
+			<h2>ハードウェアの情報</h2>
+
+			<table id="hardware_info">
+				<caption>各種デバイスの一覧</caption>
+				<tbody>
+					<tr>
+						<th scope="row">SoC</th><td>MediaTek MT7622E</td>
+					</tr>
+					<tr>
+						<th scope="row">RAM</th><td>Winbond W634GU6NB (DDR3 512MiB)</td>
+					</tr>
+					<tr>
+						<th scope="row">ストレージ</th><td>Winbond W25N01GV (128MiB SPI-NAND)</td>
+					</tr>
+					<tr>
+						<th scope="row">Wi-Fi</th><td>MediaTek MT7915 x2</td>
+					</tr>
+					<tr>
+						<th scope="row">Ethernet (1Gbps)</th><td>MediaTek MT7531AE</td>
+					</tr>
+					<tr>
+						<th scope="row">Ethernet (2.5Gbps)</th><td>Realtek RTL8221B</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section>
+			<h2>各種ファイル</h2>
+
+			<h3>Boot Log</h3>
+			<a href="/hardware/nec_platforms/wx3600hp/WX3600HP_bootlog.txt">Boot Log</a>
+
+			<h3>基板写真 表</h3>
+			<img src="/hardware/nec_platforms/wx3600hp/img/wx3600hp-pcb-front.jpg">
+
+			<h3>基板写真 裏</h3>
+			<img src="/hardware/nec_platforms/wx3600hp/img/wx3600hp-pcb-back.jpg">
+		</section>
+
+		<section>
+			<h2>UARTの取り方</h2>
+			<p>上記基板写真にある5ピンのスルーホール（写真ではすでにピンヘッダ取り付け済み）はMT7622のUART0と接続するためのものですが、これを使用するには基板上に欠けている部品をハンダ付けする必要があります。下記写真の青で囲った空きパターンにジャンパ線を、赤で囲った空きパターンに10KΩ程度のチップ抵抗をハンダ付けしてください。スルーホールの配置は基板表から見て、LANポート側から順にRXD、TXD、NC(1V8)、GND、NC(3V3)です。</p>
+			<img src="/hardware/nec_platforms/wx3600hp/img/wx3600hp-pcb-front-uart.jpg">
+			<img src="/hardware/nec_platforms/wx3600hp/img/wx3600hp-pcb-back-uart.jpg">
+		</section>
+	</main>
+
+	<footer>
+		<a href="/about/">このWebサイトについて</a>
+	</footer>
+</body>
+</html>
