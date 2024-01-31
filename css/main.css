@@ -22,6 +22,10 @@ footer {
 	display: block;
 }
 
+.large-img {
+	width: 60vw;
+}
+
 ol>li {
 	margin: 20px;
 }
