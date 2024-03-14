@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+	<meta charset="utf-8">
+	<title>2024年3月8日頃に発生したTemplateのソフトウェアを更新できなくなる問題への対応策</title>
+</head>
+
+<body>
+	<link rel="stylesheet" href="/css/main.css">
+
+	<main>
+		<h1>2024年3月8日頃に発生したTemplateのソフトウェアを更新できなくなる問題への対応策</h1>
+		<p id="update_date">更新日: 2024/03/14</p>
+
+		<section>
+			<p>このメモは、2024年3月8日頃以降に急にTemplateのソフトウェアを更新できなくなった方向けに、問題への対処法を説明しています。例えば2025年に急にTemplateのソフトウェアを更新できなくなった場合などは、問題の原因が別にありますので、このメモは役に立たないでしょう。あくまで2024年の3月頃に問題に遭遇した人向けです。</p>
+			<p>この問題は既に原因が<a href="https://github.com/QubesOS/qubes-issues/issues/9025">究明済み</a>で、問題への対処策も実装済みですが、対応策の適用法がややこしいので、ここで解説します。</p>
+		</section>
+
+		<h2>具体的な手順</h2>
+		<section>
+			<ol>
+				<li>
+					<div class="code">sudo qubes-dom0-update --enablerepo=qubes-dom0-current-testing</div>
+					Dom0の端末で上のコマンドを実行します。対応策入りの最新ソフトウェアがインストールされます。
+				</li>
+
+				<li>
+					GUIのツールで<b>sys-netのTemplate（標準ではFedora-xfce）</b>を更新します。この段階では、更新はエラーとなり失敗しますが<b>これは正常です</b>。
+				</li>
+
+				<li>システムを再起動します。</li>
+
+				<li>対応策が適用され、問題は解決します。</li>
+			</ol>
+		</section>
+
+		<p>たったこれだけですが、あえて失敗する更新作業を行うのが若干分かり辛いので、メモとして残しました。</p>
+	</main>
+
+	<footer>
+		<a href="/about/">このWebサイトについて</a>
+	</footer>
+</body>
+</html>
