@@ -1,0 +1,16 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Contact: mailto:dev@zpc.st
+Contact: https://mstdn.maud.io/@zpc0
+Expires: 2030-01-01T00:00:00.000Z
+Encryption: https://zpc.st/keys/zpc.asc
+Preferred-Languages: ja,en
+Canonical: https://zpc.st/.well-known/security.txt
+-----BEGIN PGP SIGNATURE-----
+
+iIgEARYKADAWIQQNLUOTSvwO5h3uUJmHB3gSYmDIfQUCZ86vGBIcZGV2QG1haWwu
+ei1wYy5uZXQACgkQhwd4EmJgyH3PEQEAsC7GUrsmyyzyxnpIvYNtkxqeMlsCe3ZD
+OR96ujAi7DMBANdeVxW0VTgRY5O9PH9n4mvSVvea0K/0CK7zGFfCe4EE
+=A/iu
+-----END PGP SIGNATURE-----
