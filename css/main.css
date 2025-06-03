@@ -1,12 +1,15 @@
 /* common stylesheet */
 body {
-	display: grid;
-	min-height: 95vh;
-	grid-template-rows: 1fr auto;
+	background-color: ivory;
+}
+
+main {
+	min-height: 95%;
 }
 
 footer {
-	background-color: lavender;
+	background-color: wheat;
+	padding: 2%;
 }
 
 #update_date {
@@ -23,7 +26,7 @@ footer {
 }
 
 .large-img {
-	width: 60vw;
+	width: 60%;
 }
 
 ol>li {
