@@ -9,7 +9,9 @@ main {
 
 footer {
 	background-color: wheat;
-	padding: 2%;
+	height: 50px;
+	padding-left: 50px;
+	align-content: center;
 }
 
 #update_date {
@@ -21,12 +23,12 @@ footer {
 	white-space: pre-line;
 	background-color: darkslategrey;
 	color: white;
-	width: 60%;
+	width: 70vw;
 	display: block;
 }
 
 .large-img {
-	width: 60%;
+	width: 80vw;
 }
 
 ol>li {
