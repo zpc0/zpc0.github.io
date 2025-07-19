@@ -1,15 +1,20 @@
 /* common stylesheet */
 body {
 	background-color: ivory;
+	display: flex;
+	flex-direction: column;
+	margin: 0px;
 }
 
 main {
-	min-height: 80vh;
+	min-height: 90vh;
+	margin: 0px 20px;
 }
 
 footer {
 	background-color: wheat;
-	height: 50px;
+	min-height: 10vh;
+	height: 75px;
 	padding-left: 50px;
 	align-content: center;
 }
