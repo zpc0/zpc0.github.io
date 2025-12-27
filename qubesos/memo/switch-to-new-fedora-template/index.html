@@ -10,22 +10,22 @@
 
 	<main>
 		<h1>Qubes OS: 新しいバージョンのFedora templateに切り替える</h1>
-		<p id="update_date">更新日: 2024/05/13</p>
+		<p id="update_date">更新日: 2025/12/27</p>
 
 		<section>
-			<p>このメモはQubes OS R4.2を対象にしています。他のバージョンでは動作しない可能性があります。</p>
+			<p>このメモはQubes OS R4.3を対象にしています。他のバージョンでは動作しない可能性があります。</p>
 			<p>Qubes OSの標準templateであるFedoraは半年毎に新しいバージョンがリリースされています。セキュリティーの修正を含む最新のソフトウェアを入手するためにも定期的に新しいバージョンへ更新することが推奨されます。更新方法は二種類あり、一つ目は新しくtemplateをダウンロードしてインストールする方法、もう一つは既存のtemplateをアップグレードする方法です。双方にそれぞれメリットとデメリットがありますが、このメモでは一つ目の方法で更新を行います。詳しくは<a href="https://www.qubes-os.org/doc/templates/fedora/#upgrading">公式のドキュメント</a>を参照してください。</p>
 		</section>
 
 		<h2>具体的な手順</h2>
 		<section>
 			<p>この手順は<a href="/qubesos/memo/create-dvm-template-without-version/">バージョン番号のないdisposable templateを作成する</a>を実行済みのシステムであることを前提にしています。</p>
-			<p>ここではFedora 39をFedora 40に更新します。バージョン番号は適宜読み替えてください。</p>
+			<p>ここではFedora 42をFedora 43に更新します。バージョン番号は適宜読み替えてください。</p>
 
 			<ol>
 				<li>
-					<div class="code">qvm-template install --enablerepo=qubes-templates-itl-testing fedora-40-xfce</div>
-					Fedora 40 templateをダウンロードしてインストールします。ここではqubes-dom0-updateではなくqvm-templateコマンドを使用します。（せっかくqvm-templateがあるのだから使ってみようの精神）回線速度にもよりますが、数十分かかる場合があります。
+					<div class="code">qvm-template install --enablerepo=qubes-templates-itl-testing fedora-43-xfce</div>
+					Fedora 43 templateをダウンロードしてインストールします。ここではqubes-dom0-updateではなくqvm-templateコマンドを使用します。（せっかくqvm-templateがあるのだから使ってみようの精神）回線速度にもよりますが、数十分かかる場合があります。
 				</li>
 
 				<li>
@@ -34,21 +34,21 @@
 				</li>
 
 				<li>
-					<div class="code">qvm-prefs default-dvm template fedora-40-xfce
-						qvm-prefs default-mgmt-dvm template fedora-40-xfce</div>
-					fedora-37を使用しているdisposable templateのtemplateをfedora-40-xfceに切り替えます。2行目はQubes OS内部で使用されているmanagement qubeのtemplateを変更するものです。
+					<div class="code">qvm-prefs default-dvm template fedora-43-xfce
+						qvm-prefs default-mgmt-dvm template fedora-43-xfce</div>
+					fedora-42-xfceを使用しているdisposable templateのtemplateをfedora-43-xfceに切り替えます。2行目はQubes OS内部で使用されているmanagement qubeのtemplateを変更するものです。
 				</li>
 
 				<li>
-					<div class="code">qubes-prefs default_template fedora-40-xfce</div>
-					Qubes OSシステムの標準templateをfedora-40-xfceに変更します。
+					<div class="code">qubes-prefs default_template fedora-43-xfce</div>
+					Qubes OSシステムの標準templateをfedora-43-xfceに変更します。
 				</li>
 
-				<li>fedora-39-xfceをtemplateとして使用しているqubeをfedora-40-xfceを使用するように設定する。</li>
+				<li>fedora-42-xfceをtemplateとして使用しているqubeをfedora-43-xfceを使用するように設定する。</li>
 
 				<li>
-					<div class="code">qvm-template remove fedora-39-xfce</div>
-					不要になったfedora-39-xfceを削除します。このコマンドが失敗する場合はシステムのどこかでfedora-39-xfceが使用されているということなので、設定の変更が必要です。
+					<div class="code">qvm-template remove fedora-42-xfce</div>
+					不要になったfedora-42-xfceを削除します。このコマンドが失敗する場合はシステムのどこかでfedora-42-xfceが使用されているということなので、設定の変更が必要です。
 				</li>
 			</ol>
 		</section>
