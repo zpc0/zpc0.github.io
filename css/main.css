@@ -1,6 +1,5 @@
 /* common stylesheet */
 body {
-	background-color: ivory;
 	display: flex;
 	flex-direction: column;
 	margin: 0px;
@@ -12,7 +11,7 @@ main {
 }
 
 footer {
-	background-color: wheat;
+	background-color: ivory;
 	min-height: 10vh;
 	height: 75px;
 	padding-left: 50px;
